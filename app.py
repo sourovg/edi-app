@@ -3,7 +3,8 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-import subprocess
+#import subprocess
+from analytics.pyspark_tasks import analyze_data
 # Load environment variables from .env
 from dotenv import load_dotenv
 load_dotenv()
@@ -41,8 +42,15 @@ if page == "Student Progress":
     
     # Write PySpark results / Analytics 
     st.write("Avg. Score by Subject")
-    result = subprocess.check_output(['python', 'pyspark/pyspark_tasks.py'])
-    st.text(result.decode())
+    #result = subprocess.check_output(['python', 'pyspark/pyspark_tasks.py'])
+    try:
+        result = analyze_data()
+        # for subject, avg_score in result:
+        #     st.write(f"{subject}: {avg_score:.2f}")
+        st.write(result)
+    except Exception as e:
+        st.error(f"Error running PySpark task: {e}")
+    #st.text(result.decode())
     
 # Psychometric Insights Page
 elif page == "Psychometric Insights":
