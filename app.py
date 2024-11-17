@@ -94,7 +94,7 @@ elif page == "Teacher Dashboard":
 #     return pd.read_sql_query(query, conn)
 
 # # Query data
-cursor = conn.cursor()
-cursor.execute("SELECT * FROM students")
-students = cursor.fetchall()
-print(students)  # [(1, 'John Doe', '5th', '')]
+# cursor = conn.cursor()
+# cursor.execute("SELECT * FROM students")
+# students = cursor.fetchall()
+# print(students)  # [(1, 'John Doe', '5th', '')]
