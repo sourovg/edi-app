@@ -31,3 +31,11 @@ new_note = st.text_area("Enter Teacher Notes")
 if st.button("Save Note"):
     # Save notes logic
     pass
+
+
+cursor = conn.cursor()
+
+# Query data
+cursor.execute("SELECT * FROM students")
+students = cursor.fetchall()
+print(students)  # [(1, 'John Doe', '5th', '')]
