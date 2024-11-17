@@ -5,22 +5,23 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-# Stop any existing Spark session
-#SparkSession.builder.getOrCreate().stop()
-
-# Access the DB_PATH variable
-#db_path = "./data/education_app.db"  #direct
-#db_path = os.getenv("DB_PATH") #issue with abosolute path 
-db_path = os.path.abspath(os.getenv("DB_PATH")) # Default to ./data/education_app.db if not set
-#print(f"Database path: {db_path}")
-
-# Path to SQLite JDBC driver
-#jdbc_path = "./.libs/sqlite-jdbc-3.36.0.3.jar" #direct
-#jdbc_path = os.getenv("JDBC_PATH")  #issue with abosolute path
-jdbc_path = os.path.abspath(os.getenv("JDBC_PATH"))
-#print(f"SqLite JDBC path: {jdbc_path}")
-
 def analyze_data():
+    # Stop any existing Spark session
+    #SparkSession.builder.getOrCreate().stop()
+
+    # Access the DB_PATH variable
+    #db_path = "./data/education_app.db"  #direct
+    #db_path = os.getenv("DB_PATH") #issue with abosolute path 
+    db_path = os.path.abspath(os.getenv("DB_PATH")) # Default to ./data/education_app.db if not set
+    #print(f"Database path: {db_path}")
+
+    # Path to SQLite JDBC driver
+    #jdbc_path = "./.libs/sqlite-jdbc-3.36.0.3.jar" #direct
+    #jdbc_path = os.getenv("JDBC_PATH")  #issue with abosolute path
+    jdbc_path = os.path.abspath(os.getenv("JDBC_PATH"))
+    #print(f"SqLite JDBC path: {jdbc_path}")
+
+
     # Initialize Spark session with the driver
     spark = SparkSession.builder \
         .appName("EducationApp") \
