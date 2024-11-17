@@ -4,6 +4,9 @@
 #2. Psychometric Insights: Showcase behavioral traits with mock data.
 #3. Teacher Dashboard: Display student summaries and allow notes/updates. 
 
+#App path 
+https://edu-app.streamlit.app/
+
 #Project Structure 
 education_app/
 ├── app.py                 # Main Streamlit app file
