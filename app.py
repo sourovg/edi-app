@@ -9,11 +9,18 @@ from analytics.pyspark_tasks import analyze_data
 from dotenv import load_dotenv
 load_dotenv()
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 # Access the DB_PATH variable
 #db_path = "./data/education_app.db"  #direct
 #db_path = os.getenv("DB_PATH") #issue with abosolute path 
 db_path = os.path.abspath(os.getenv("DB_PATH")) # Default to ./data/education_app.db if not set
 print(f"Database path: {db_path}")
+
+jdbc_path = os.path.abspath(os.getenv("JDBC_PATH"))
+#jdbc_path = st.secrets["JDBC_PATH"]
+print(f"JDBC Path: {jdbc_path}")
 
 # Connect to SQLite database
 conn = sqlite3.connect(db_path)
@@ -41,16 +48,16 @@ if page == "Student Progress":
     st.pyplot(plt)
     
     # Write PySpark results / Analytics 
-    st.write("Avg. Score by Subject")
-    #result = subprocess.check_output(['python', 'pyspark/pyspark_tasks.py'])
-    try:
-        result = analyze_data()
-        # for subject, avg_score in result:
-        #     st.write(f"{subject}: {avg_score:.2f}")
-        st.write(result)
-    except Exception as e:
-        st.error(f"Error running PySpark task: {e}")
-    #st.text(result.decode())
+    #st.write("Avg. Score by Subject")
+    ##result = subprocess.check_output(['python', 'pyspark/pyspark_tasks.py'])
+    # try:
+    #     result = analyze_data()
+    #     # for subject, avg_score in result:
+    #     #     st.write(f"{subject}: {avg_score:.2f}")
+    #     st.write(result)
+    # except Exception as e:
+    #     st.error(f"Error running PySpark task: {e}")
+    ##st.text(result.decode())
     
 # Psychometric Insights Page
 elif page == "Psychometric Insights":

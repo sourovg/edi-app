@@ -66,8 +66,8 @@ def analyze_data():
         # Stop the Spark Session
         spark.stop()
 
-results = analyze_data()
-print(results)
+#results = analyze_data()
+#print(results)
 #Average Scores per Subject:
 
 #data = spark.read.csv("data/dummy_data.csv", header=True, inferSchema=True)
